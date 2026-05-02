@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}登入{% endblock %}
+
+{% block content %}
+<article>
+    <h1>會員登入</h1>
+
+    <form method="post">
+        <label>
+            Email
+            <input type="email" name="email" required>
+        </label>
+
+        <label>
+            密碼
+            <input type="password" name="password" required>
+        </label>
+
+        <button type="submit">登入</button>
+        <a href="{{ url_for('index') }}" role="button" class="secondary">回首頁</a>
+    </form>
+
+    <p>
+        預設管理者：<br>
+        Email：<code>admin@example.com</code><br>
+        密碼：<code>admin123</code>
+    </p>
+</article>
+{% endblock %}
