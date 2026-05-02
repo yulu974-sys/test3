@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}會員系統{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><strong>👥 會員系統</strong></li>
+            </ul>
+            <ul>
+                <li><a href="{{ url_for('index') }}">首頁</a></li>
+
+                {% if not session.get('username') %}
+                    <li><a href="{{ url_for('login_route') }}">登入</a></li>
+                    <li><a href="{{ url_for('register_route') }}">註冊</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('announcement') }}">公告</a></li>
+                    <li><a href="{{ url_for('profile') }}">個人資料</a></li>
+
+                    {% if session.get('is_admin') %}
+                        <li><a href="{{ url_for('users_list_route') }}">會員管理</a></li>
+                    {% endif %}
+
+                    <li><a href="{{ url_for('logout') }}">登出 ({{ session.get('username') }})</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="container">
+        <hr>
+        <p><small>1142 Web 程式設計 - 期中考</small></p>
+    </footer>
+</body>
+</html>
