@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}系統公告{% endblock %}
+
+{% block content %}
+<article>
+    <h1>系統公告</h1>
+
+    <p>歡迎使用 Session 會員系統。</p>
+    <p>本系統已支援登入狀態管理、角色權限控制、個人資料修改與管理者會員管理功能。</p>
+
+    <hr>
+
+    <a href="{{ url_for('profile') }}" role="button">個人資料</a>
+
+    {% if session.get('is_admin') %}
+        <a href="{{ url_for('users_list_route') }}" role="button" class="secondary">會員管理</a>
+    {% endif %}
+
+    <a href="{{ url_for('logout') }}" role="button" class="outline">登出</a>
+</article>
+{% endblock %}
