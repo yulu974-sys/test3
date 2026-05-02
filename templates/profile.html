@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}個人資料{% endblock %}
+
+{% block content %}
+<article>
+    <h1>個人資料</h1>
+
+    <form method="post">
+        <label>
+            帳號，不可修改
+            <input type="text" value="{{ user.username }}" disabled>
+        </label>
+
+        <label>
+            Email
+            <input type="email" name="email" value="{{ user.email }}" required>
+        </label>
+
+        <label>
+            電話
+            <input type="text" name="phone" value="{{ user.phone }}">
+        </label>
+
+        <label>
+            出生日期
+            <input type="date" name="birthdate" value="{{ user.birthdate }}" required>
+        </label>
+
+        <label>
+            新密碼，選填
+            <input type="password" name="password" minlength="6" maxlength="16" placeholder="不修改請留空">
+        </label>
+
+        <button type="submit">更新資料</button>
+        <a href="{{ url_for('announcement') }}" role="button" class="secondary">回公告</a>
+    </form>
+</article>
+{% endblock %}
