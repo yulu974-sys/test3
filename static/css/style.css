@@ -1,0 +1,20 @@
+body {
+    padding-top: 1rem;
+}
+
+article {
+    margin-top: 1.5rem;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.inline-form button {
+    margin-left: 0.4rem;
+}
+
+table td,
+table th {
+    white-space: nowrap;
+}
