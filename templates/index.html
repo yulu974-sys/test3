@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}首頁{% endblock %}
+
+{% block content %}
+<article>
+    <h1>Session 會員系統</h1>
+    <p>本系統提供會員註冊、登入、Session 狀態管理、個人資料修改與管理者會員管理功能。</p>
+
+    {% if not session.get('username') %}
+        <a href="{{ url_for('login_route') }}" role="button">登入</a>
+        <a href="{{ url_for('register_route') }}" role="button" class="secondary">註冊</a>
+    {% else %}
+        <p>目前登入：<strong>{{ session.get('username') }}</strong></p>
+        <a href="{{ url_for('announcement') }}" role="button">系統公告</a>
+        <a href="{{ url_for('profile') }}" role="button" class="secondary">個人資料</a>
+    {% endif %}
+</article>
+{% endblock %}
