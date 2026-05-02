@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}編輯會員{% endblock %}
+
+{% block content %}
+<article>
+    <h1>編輯會員</h1>
+
+    <form method="post">
+        <label>
+            帳號，不可修改
+            <input type="text" value="{{ user.username }}" disabled>
+        </label>
+
+        <label>
+            Email，不可修改
+            <input type="email" value="{{ user.email }}" disabled>
+        </label>
+
+        <label>
+            電話
+            <input type="text" name="phone" value="{{ user.phone }}">
+        </label>
+
+        <label>
+            出生日期
+            <input type="date" name="birthdate" value="{{ user.birthdate }}" required>
+        </label>
+
+        <label>
+            新密碼，選填
+            <input type="password" name="password" minlength="6" maxlength="16" placeholder="不修改請留空">
+        </label>
+
+        <button type="submit">儲存修改</button>
+        <a href="{{ url_for('users_list_route') }}" role="button" class="secondary">回會員管理</a>
+    </form>
+</article>
+{% endblock %}
